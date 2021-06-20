@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Globalization" Version="4.3.0"/>
+    <PackageReference Include="FSharp.Data" Version="4.1.1"/>
+    <PackageReference Include="FSharp.Core" Version="5.0.1"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="hebcal-data.json"/>
+    <Compile Include="Besorot.fs" />
+    <Compile Include="Parshiot.fs" />
+    <Compile Include="Shabbat.fs" />
+  </ItemGroup>
+
+</Project>
