@@ -17,10 +17,6 @@ module TypeUtils =
         |_ -> None
 
 module Besorot =
-    //type Reading = {
-    //    parasha: string;
-    //    reading: string
-    //}
 
     type Parasha = 
         ``Bereshit``
@@ -49,6 +45,8 @@ module Besorot =
         |``Purim``
         |``Ki Tisa``
         |``Vayakhel-Pekudei``
+        |``Vayakhel``
+        |``Pekudei``
         |``Shabbat Parah``
         |``Vayikra``
         |``Shabbat HaChodesh``
@@ -59,9 +57,15 @@ module Besorot =
         |``Pesach VIII``
         |``Shmini``
         |``Tazria-Metzora``
+        |``Tazria``
+        |``Metzora``
         |``Achrei Mot-Kedoshim``
+        |``Achrei Mot``
+        |``Kedoshim``
         |``Emor``
         |``Behar-Bechukotai``
+        |``Behar``
+        |``Bechukotai``
         |``Bamidbar``
         |``Shavuot I``
         |``Shavuot II``
@@ -74,6 +78,8 @@ module Besorot =
         |``Pinchas``
         |``Rosh Chodesh Av``
         |``Matot-Masei``
+        |``Matot``
+        |``Masei``
         |``Devarim``
         |``Shabbat Chazon``
         |``Vaetchanan``
@@ -106,146 +112,200 @@ module Besorot =
 
     type Year = A | B | C
 
-    type ReadingRec = { Parasha: string; Reading: string }
+    type ReadingRec = { Parasha: Parasha; Reading: string }
 
     let CycleA = [
-        {Parasha = "Bereshit"; Reading = "John 1:1-18"}
-        {Parasha = "Noach"; Reading = "Matthew 1:1-17"}
-        {Parasha = "Lech-Lecha"; Reading = "Matthew 1:18-25"}
-        {Parasha = "Vayera"; Reading = "Matthew 2:1-12"}
-        {Parasha = "Chayei Sara"; Reading = "Matthew 3:1-12"}
-        {Parasha = "Toldot"; Reading = "Matthew 3:13-4:11"}
-        {Parasha = "Vayetzei"; Reading = "Mark 1:14-28"}
-        {Parasha = "Vayishlach"; Reading = "Mark 1:29-45"}
-        {Parasha = "Vayeshev"; Reading = "Matthew 5:1-16"}
-        {Parasha = "Miketz"; Reading = "Matthew 5:17-26"}
-        {Parasha = "Vayigash"; Reading = "Matthew 5:27-48"}
-        {Parasha = "Vayechi"; Reading = "Matthew 6:1-18"}
-        {Parasha = "Shemot"; Reading = "Matthew 6:19-34"}
-        {Parasha = "Vaera"; Reading = "Matthew 7:1-12"}
-        {Parasha = "Bo"; Reading = "Matthew 7:13-29"}
-        {Parasha = "Beshalach"; Reading = "Mark 2:1-12"}
-        {Parasha = "Yitro"; Reading = "Matthew 11:2-19"}
-        {Parasha = "Mishpatim"; Reading = "Matthew 11:20-30"}
-        {Parasha = "Terumah"; Reading = "Matthew 13:1-23"}
-        {Parasha = "Tetzaveh"; Reading = "Matthew 14:12-33"}
-        {Parasha = "Ki Tisa"; Reading = "Matthew 15:1-20"}
-        {Parasha = "Vayakhel"; Reading = "Matthew 15:21-28"}
-        {Parasha = "Pekudei"; Reading = "Matthew 15:29-39"}
-        {Parasha = "Vayakhel-Pekudei"; Reading = "Matthew 15:21-39"}
-        {Parasha = ""; Reading = "Matthew "}
-        {Parasha = ""; Reading = "Matthew "}
-        {Parasha = ""; Reading = "Matthew "}
-        {Parasha = ""; Reading = "Matthew "}
-        {Parasha = ""; Reading = "Matthew "}
-        {Parasha = ""; Reading = "Matthew "}
+        {Parasha = Parasha.``Bereshit``; Reading = "John 1:1-18"}
+        {Parasha = Parasha.``Noach``; Reading = "Matthew 1:1-17"}
+        {Parasha = Parasha.``Lech-Lecha``; Reading = "Matthew 1:18-25"}
+        {Parasha = Parasha.``Vayera``; Reading = "Matthew 2:1-12"}
+        {Parasha = Parasha.``Chayei Sara``; Reading = "Matthew 3:1-12"}
+        {Parasha = Parasha.``Toldot``; Reading = "Matthew 3:13-4:11"}
+        {Parasha = Parasha.``Vayetzei``; Reading = "Mark 1:14-28"}
+        {Parasha = Parasha.``Vayishlach``; Reading = "Mark 1:29-45"}
+        {Parasha = Parasha.``Vayeshev``; Reading = "Matthew 5:1-16"}
+        {Parasha = Parasha.``Miketz``; Reading = "Matthew 5:17-26"}
+        {Parasha = Parasha.``Vayigash``; Reading = "Matthew 5:27-48"}
+        {Parasha = Parasha.``Vayechi``; Reading = "Matthew 6:1-18"}
+        {Parasha = Parasha.``Shemot``; Reading = "Matthew 6:19-34"}
+        {Parasha = Parasha.``Vaera``; Reading = "Matthew 7:1-12"}
+        {Parasha = Parasha.``Bo``; Reading = "Matthew 7:13-29"}
+        {Parasha = Parasha.``Beshalach``; Reading = "Mark 2:1-12"}
+        {Parasha = Parasha.``Yitro``; Reading = "Matthew 11:2-19"}
+        {Parasha = Parasha.``Mishpatim``; Reading = "Matthew 11:20-30"}
+        {Parasha = Parasha.``Terumah``; Reading = "Matthew 13:1-23"}
+        {Parasha = Parasha.``Tetzaveh``; Reading = "Matthew 14:12-33"}
+        {Parasha = Parasha.``Ki Tisa``; Reading = "Matthew 15:1-20"}
+        {Parasha = Parasha.``Vayakhel``; Reading = "Matthew 15:21-28"}
+        {Parasha = Parasha.``Pekudei``; Reading = "Matthew 15:29-39"}
+        {Parasha = Parasha.``Vayakhel-Pekudei``; Reading = "Matthew 15:21-39"}
+        {Parasha = Parasha.``Vayikra``; Reading = ""}
+        {Parasha = Parasha.``Tzav``; Reading = ""}
+        {Parasha = Parasha.``Shmini``; Reading = ""}
+        {Parasha = Parasha.``Tazria-Metzora``; Reading = ""}
+        {Parasha = Parasha.``Tazria``; Reading = ""}
+        {Parasha = Parasha.``Metzora``; Reading = ""}
+        {Parasha = Parasha.``Achrei Mot-Kedoshim``; Reading = ""}
+        {Parasha = Parasha.``Kedoshim``; Reading = ""}
+        {Parasha = Parasha.``Achrei Mot``; Reading = ""}
+        {Parasha = Parasha.``Emor``; Reading = ""}
+        {Parasha = Parasha.``Behar``; Reading = ""}
+        {Parasha = Parasha.``Bechukotai``; Reading = ""}
+        {Parasha = Parasha.``Behar-Bechukotai``; Reading = ""}
+        {Parasha = Parasha.``Bamidbar``; Reading = "Mark 12:28-34"}
+        {Parasha = Parasha.``Nasso``; Reading = ""}
+        {Parasha = Parasha.``Beha'alotcha``; Reading = ""}
+        {Parasha = Parasha.``Sh'lach``; Reading = ""}
+        {Parasha = Parasha.``Korach``; Reading = ""}
+        {Parasha = Parasha.``Chukat``; Reading = ""}
+        {Parasha = Parasha.``Balak``; Reading = ""}
+        {Parasha = Parasha.``Pinchas``; Reading = ""}
+        {Parasha = Parasha.``Matot``; Reading = ""}
+        {Parasha = Parasha.``Masei``; Reading = ""}
+        {Parasha = Parasha.``Matot-Masei``; Reading = ""}
+        {Parasha = Parasha.``Devarim``; Reading = ""}
+        {Parasha = Parasha.``Vaetchanan``; Reading = ""}
+        {Parasha = Parasha.``Eikev``; Reading = ""}
+        {Parasha = Parasha.``Re'eh``; Reading = ""}
+        {Parasha = Parasha.``Shoftim``; Reading = ""}
+        {Parasha = Parasha.``Ki Teitzei``; Reading = ""}
+        {Parasha = Parasha.``Ki Tavo``; Reading = ""}
+        {Parasha = Parasha.``Nitzavim``; Reading = ""}
+        {Parasha = Parasha.``Vayeilech``; Reading = ""}
+        {Parasha = Parasha.``Ha'Azinu``; Reading = ""}
         ]
 
     let CycleB = [
-        {Parasha = "Bereshit"; Reading = "John 1:1-18"}
-        {Parasha = "Noach"; Reading = "Luke 1:26-38"}
-        {Parasha = "Lech-Lecha"; Reading = "Luke 2:1-20"}
-        {Parasha = "Vayera"; Reading = "Luke 2:21-40"}
-        {Parasha = "Chayei Sara"; Reading = "Luke 3:1-17"}
-        {Parasha = "Toldot"; Reading = "Luke 3:18-38"}
-        {Parasha = "Vayetzei"; Reading = "Luke 4:1-15"}
-        {Parasha = "Vayishlach"; Reading = "Luke 4:16-30"}
-        {Parasha = "Vayeshev"; Reading = "Luke 4:31-44"}
-        {Parasha = "Miketz"; Reading = "Luke 5:1-11"}
-        {Parasha = "Vayigash"; Reading = "Luke 5:12-26"}
-        {Parasha = "Vayechi"; Reading = "Luke 5:27-39"}
-        {Parasha = "Shemot"; Reading = "Luke 6:1-16"}
-        {Parasha = "Vaera"; Reading = "Luke 6:17-38"}
-        {Parasha = "Bo"; Reading = "Luke 7:1-17"}
-        {Parasha = "Beshalach"; Reading = "Luke 7:18-35"}
-        {Parasha = "Yitro"; Reading = "Luke 7:36-50"}
-        {Parasha = "Mishpatim"; Reading = "Luke 8:1-21"}
-        {Parasha = "Terumah"; Reading = "Luke 8:22-39"}
-        {Parasha = "Tetzaveh"; Reading = "Luke 8:40-56"}
-        {Parasha = "Ki Tisa"; Reading = "Luke 9:1-17"}
-        {Parasha = "Vayakhel"; Reading = "Luke 9:18-27"}
-        {Parasha = "Pekudei"; Reading = "Luke 9:28-36"}
-        {Parasha = "Vayakhel-Pekudei"; Reading = "Luke 9:18-36"}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
-        {Parasha = ""; Reading = "Luke "}
+        {Parasha = Parasha.``Bereshit``; Reading = "John 1:1-18"}
+        {Parasha = Parasha.``Noach``; Reading = "Luke 1:26-38"}
+        {Parasha = Parasha.``Lech-Lecha``; Reading = "Luke 2:1-20"}
+        {Parasha = Parasha.``Vayera``; Reading = "Luke 2:21-40"}
+        {Parasha = Parasha.``Chayei Sara``; Reading = "Luke 3:1-17"}
+        {Parasha = Parasha.``Toldot``; Reading = "Luke 3:18-38"}
+        {Parasha = Parasha.``Vayetzei``; Reading = "Luke 4:1-15"}
+        {Parasha = Parasha.``Vayishlach``; Reading = "Luke 4:16-30"}
+        {Parasha = Parasha.``Vayeshev``; Reading = "Luke 4:31-44"}
+        {Parasha = Parasha.``Miketz``; Reading = "Luke 5:1-11"}
+        {Parasha = Parasha.``Vayigash``; Reading = "Luke 5:12-26"}
+        {Parasha = Parasha.``Vayechi``; Reading = "Luke 5:27-39"}
+        {Parasha = Parasha.``Shemot``; Reading = "Luke 6:1-16"}
+        {Parasha = Parasha.``Vaera``; Reading = "Luke 6:17-38"}
+        {Parasha = Parasha.``Bo``; Reading = "Luke 7:1-17"}
+        {Parasha = Parasha.``Beshalach``; Reading = "Luke 7:18-35"}
+        {Parasha = Parasha.``Yitro``; Reading = "Luke 7:36-50"}
+        {Parasha = Parasha.``Mishpatim``; Reading = "Luke 8:1-21"}
+        {Parasha = Parasha.``Terumah``; Reading = "Luke 8:22-39"}
+        {Parasha = Parasha.``Tetzaveh``; Reading = "Luke 8:40-56"}
+        {Parasha = Parasha.``Ki Tisa``; Reading = "Luke 9:1-17"}
+        {Parasha = Parasha.``Vayakhel``; Reading = "Luke 9:18-27"}
+        {Parasha = Parasha.``Pekudei``; Reading = "Luke 9:28-36"}
+        {Parasha = Parasha.``Vayakhel-Pekudei``; Reading = "Luke 9:18-36"}
+        {Parasha = Parasha.``Vayikra``; Reading = ""}
+        {Parasha = Parasha.``Tzav``; Reading = ""}
+        {Parasha = Parasha.``Shmini``; Reading = ""}
+        {Parasha = Parasha.``Tazria-Metzora``; Reading = ""}
+        {Parasha = Parasha.``Tazria``; Reading = ""}
+        {Parasha = Parasha.``Metzora``; Reading = ""}
+        {Parasha = Parasha.``Achrei Mot-Kedoshim``; Reading = ""}
+        {Parasha = Parasha.``Kedoshim``; Reading = ""}
+        {Parasha = Parasha.``Achrei Mot``; Reading = ""}
+        {Parasha = Parasha.``Emor``; Reading = ""}
+        {Parasha = Parasha.``Behar``; Reading = ""}
+        {Parasha = Parasha.``Bechukotai``; Reading = ""}
+        {Parasha = Parasha.``Behar-Bechukotai``; Reading = ""}
+        {Parasha = Parasha.``Bamidbar``; Reading = "Luke 16:19-31"}
+        {Parasha = Parasha.``Nasso``; Reading = ""}
+        {Parasha = Parasha.``Beha'alotcha``; Reading = ""}
+        {Parasha = Parasha.``Sh'lach``; Reading = ""}
+        {Parasha = Parasha.``Korach``; Reading = ""}
+        {Parasha = Parasha.``Chukat``; Reading = ""}
+        {Parasha = Parasha.``Balak``; Reading = ""}
+        {Parasha = Parasha.``Pinchas``; Reading = ""}
+        {Parasha = Parasha.``Matot``; Reading = ""}
+        {Parasha = Parasha.``Masei``; Reading = ""}
+        {Parasha = Parasha.``Matot-Masei``; Reading = ""}
+        {Parasha = Parasha.``Devarim``; Reading = ""}
+        {Parasha = Parasha.``Vaetchanan``; Reading = ""}
+        {Parasha = Parasha.``Eikev``; Reading = ""}
+        {Parasha = Parasha.``Re'eh``; Reading = ""}
+        {Parasha = Parasha.``Shoftim``; Reading = ""}
+        {Parasha = Parasha.``Ki Teitzei``; Reading = ""}
+        {Parasha = Parasha.``Ki Tavo``; Reading = ""}
+        {Parasha = Parasha.``Nitzavim``; Reading = ""}
+        {Parasha = Parasha.``Vayeilech``; Reading = ""}
+        {Parasha = Parasha.``Ha'Azinu``; Reading = ""}
         ]
 
     let CycleC = [
-        {Parasha = "Bereshit"; Reading = "John 1:1-18"}
-        {Parasha = "Noach"; Reading = "John 1:19-34"}
-        {Parasha = "Lech-Lecha"; Reading = "John 1:35-51"}
-        {Parasha = "Vayera"; Reading = "John 2:1-12"}
-        {Parasha = "Chayei Sara"; Reading = "John 2:13-25"}
-        {Parasha = "Toldot"; Reading = "John 3:1-21"}
-        {Parasha = "Vayetzei"; Reading = "John 4:5-30"}
-        {Parasha = "Vayishlach"; Reading = "John 4:31-42"}
-        {Parasha = "Vayeshev"; Reading = "John 4:43-54"}
-        {Parasha = "Miketz"; Reading = "John 5:1-15"}
-        {Parasha = "Vayigash"; Reading = "John 5:16-29"}
-        {Parasha = "Vayechi"; Reading = "John 5:30-47"}
-        {Parasha = "Shemot"; Reading = "John 6:1-15"}
-        {Parasha = "Vaera"; Reading = "John 6:16-29"}
-        {Parasha = "Bo"; Reading = "John 6:30-51"}
-        {Parasha = "Beshalach"; Reading = "John 6:52-71"}
-        {Parasha = "Yitro"; Reading = "John 7:1-13"}
-        {Parasha = "Mishpatim"; Reading = "John 7:14-24"}
-        {Parasha = "Terumah"; Reading = "John 7:25-36"}
-        {Parasha = "Tetzaveh"; Reading = "John 7:37-52"}
-        {Parasha = "Ki Tisa"; Reading = "John 8:1-11"}
-        {Parasha = "Vayakhel"; Reading = "John 8:12-20"}
-        {Parasha = "Pekudei"; Reading = "John 8:21-30"}
-        {Parasha = "Vayakhel-Pekudei"; Reading = "John 8:12-30"}
-        {Parasha = "Vayikra"; Reading = ""}
-        {Parasha = "Tzav"; Reading = ""}
-        {Parasha = "Shmini"; Reading = ""}
-        {Parasha = "Tazria-Metzora"; Reading = ""}
-        {Parasha = "Tazria"; Reading = ""}
-        {Parasha = "Metzora"; Reading = ""}
-        {Parasha = "Achrei Mot-Kedoshim"; Reading = ""}
-        {Parasha = "Kedoshim"; Reading = ""}
-        {Parasha = "Achrei Mot"; Reading = ""}
-        {Parasha = "Emor"; Reading = ""}
-        {Parasha = "Behar"; Reading = ""}
-        {Parasha = "Bechukotai"; Reading = ""}
-        {Parasha = "Behar-Bechukotai"; Reading = ""}
-        {Parasha = "Bamidbar"; Reading = ""}
-        {Parasha = "Nasso"; Reading = ""}
-        {Parasha = "Beha'alotcha"; Reading = ""}
-        {Parasha = "Sh'lach"; Reading = ""}
-        {Parasha = "Korach"; Reading = ""}
-        {Parasha = "Chukat"; Reading = ""}
-        {Parasha = "Balak"; Reading = ""}
-        {Parasha = "Pinchas"; Reading = ""}
-        {Parasha = "Matot"; Reading = ""}
-        {Parasha = "Masei"; Reading = ""}
-        {Parasha = "Matot-Masei"; Reading = ""}
-        {Parasha = "Devarim"; Reading = ""}
-        {Parasha = "Vaetchanan"; Reading = ""}
-        {Parasha = "Eikev"; Reading = ""}
-        {Parasha = "Re'eh"; Reading = ""}
-        {Parasha = "Shoftim"; Reading = ""}
-        {Parasha = "Ki Teitzei"; Reading = ""}
-        {Parasha = "Ki Tavo"; Reading = ""}
-        {Parasha = "Nitzavim"; Reading = ""}
-        {Parasha = "Vayeilech"; Reading = ""}
-        {Parasha = "Ha'Azinu"; Reading = ""}
+        {Parasha = Parasha.``Bereshit``; Reading = "John 1:1-18"}
+        {Parasha = Parasha.``Noach``; Reading = "John 1:19-34"}
+        {Parasha = Parasha.``Lech-Lecha``; Reading = "John 1:35-51"}
+        {Parasha = Parasha.``Vayera``; Reading = "John 2:1-12"}
+        {Parasha = Parasha.``Chayei Sara``; Reading = "John 2:13-25"}
+        {Parasha = Parasha.``Toldot``; Reading = "John 3:1-21"}
+        {Parasha = Parasha.``Vayetzei``; Reading = "John 4:5-30"}
+        {Parasha = Parasha.``Vayishlach``; Reading = "John 4:31-42"}
+        {Parasha = Parasha.``Vayeshev``; Reading = "John 4:43-54"}
+        {Parasha = Parasha.``Miketz``; Reading = "John 5:1-15"}
+        {Parasha = Parasha.``Vayigash``; Reading = "John 5:16-29"}
+        {Parasha = Parasha.``Vayechi``; Reading = "John 5:30-47"}
+        {Parasha = Parasha.``Shemot``; Reading = "John 6:1-15"}
+        {Parasha = Parasha.``Vaera``; Reading = "John 6:16-29"}
+        {Parasha = Parasha.``Bo``; Reading = "John 6:30-51"}
+        {Parasha = Parasha.``Beshalach``; Reading = "John 6:52-71"}
+        {Parasha = Parasha.``Yitro``; Reading = "John 7:1-13"}
+        {Parasha = Parasha.``Mishpatim``; Reading = "John 7:14-24"}
+        {Parasha = Parasha.``Terumah``; Reading = "John 7:25-36"}
+        {Parasha = Parasha.``Tetzaveh``; Reading = "John 7:37-52"}
+        {Parasha = Parasha.``Ki Tisa``; Reading = "John 8:1-11"}
+        {Parasha = Parasha.``Vayakhel``; Reading = "John 8:12-20"}
+        {Parasha = Parasha.``Pekudei``; Reading = "John 8:21-30"}
+        {Parasha = Parasha.``Vayakhel-Pekudei``; Reading = "John 8:12-30"}
+        {Parasha = Parasha.``Vayikra``; Reading = ""}
+        {Parasha = Parasha.``Tzav``; Reading = ""}
+        {Parasha = Parasha.``Shmini``; Reading = ""}
+        {Parasha = Parasha.``Tazria-Metzora``; Reading = ""}
+        {Parasha = Parasha.``Tazria``; Reading = ""}
+        {Parasha = Parasha.``Metzora``; Reading = ""}
+        {Parasha = Parasha.``Achrei Mot-Kedoshim``; Reading = ""}
+        {Parasha = Parasha.``Kedoshim``; Reading = ""}
+        {Parasha = Parasha.``Achrei Mot``; Reading = ""}
+        {Parasha = Parasha.``Emor``; Reading = ""}
+        {Parasha = Parasha.``Behar``; Reading = ""}
+        {Parasha = Parasha.``Bechukotai``; Reading = ""}
+        {Parasha = Parasha.``Behar-Bechukotai``; Reading = ""}
+        {Parasha = Parasha.``Bamidbar``; Reading = "John 11:38-57"}
+        {Parasha = Parasha.``Nasso``; Reading = ""}
+        {Parasha = Parasha.``Beha'alotcha``; Reading = ""}
+        {Parasha = Parasha.``Sh'lach``; Reading = ""}
+        {Parasha = Parasha.``Korach``; Reading = ""}
+        {Parasha = Parasha.``Chukat``; Reading = ""}
+        {Parasha = Parasha.``Balak``; Reading = ""}
+        {Parasha = Parasha.``Pinchas``; Reading = ""}
+        {Parasha = Parasha.``Matot``; Reading = ""}
+        {Parasha = Parasha.``Masei``; Reading = ""}
+        {Parasha = Parasha.``Matot-Masei``; Reading = ""}
+        {Parasha = Parasha.``Devarim``; Reading = ""}
+        {Parasha = Parasha.``Vaetchanan``; Reading = ""}
+        {Parasha = Parasha.``Eikev``; Reading = ""}
+        {Parasha = Parasha.``Re'eh``; Reading = ""}
+        {Parasha = Parasha.``Shoftim``; Reading = ""}
+        {Parasha = Parasha.``Ki Teitzei``; Reading = ""}
+        {Parasha = Parasha.``Ki Tavo``; Reading = ""}
+        {Parasha = Parasha.``Nitzavim``; Reading = ""}
+        {Parasha = Parasha.``Vayeilech``; Reading = ""}
+        {Parasha = Parasha.``Ha'Azinu``; Reading = ""}
         ]
 
     let HolidayReadings = [
-        {Parasha = "Sukkot"; Reading = ""}
-        {Parasha = "Yom Kippur"; Reading = ""}
-        {Parasha = "Rosh Hashana"; Reading = ""}
-        {Parasha = "Shabbat Shuva"; Reading = ""}
-        {Parasha = "Rosh Hashana II"; Reading = ""}
-        {Parasha = "Shavuot I"; Reading = ""}
+        {Parasha = Parasha.``Sukkot I``; Reading = ""}
+        {Parasha = Parasha.``Sukkot II``; Reading = ""}
+        {Parasha = Parasha.``Yom Kippur``; Reading = ""}
+        {Parasha = Parasha.``Rosh Hashana I``; Reading = ""}
+        {Parasha = Parasha.``Rosh Hashana II``; Reading = ""}
+        {Parasha = Parasha.``Shabbat Shuva``; Reading = ""}
+        {Parasha = Parasha.``Rosh Hashana II``; Reading = ""}
+        {Parasha = Parasha.``Shavuot I``; Reading = ""}
         ]
 
     let BesorotData (year: Year) =
@@ -275,16 +335,18 @@ module Besorot =
         | 1 -> Year.B
         | _ -> Year.C
 
-    let GetReading calendarYear parasha =
+    let GetReading calendarYear weeklyParasha =
         let cycleYear = GetYear calendarYear
         let readings = BesorotData cycleYear
 
-        let specialReading = GetSpecialReadings parasha.Shabbat cycleYear
+        let parasha = Option.get(Parasha.FromString weeklyParasha.Sedra) // TODO figure out how to handle this option
+
+        let specialReading = GetSpecialReadings weeklyParasha.Shabbat cycleYear
 
         let reading = 
             match specialReading with
-            | Some r -> Some { Parasha = parasha.Sedra; Reading = r }
-            | None -> (readings |> Seq.tryFind(fun i -> i.Parasha = parasha.Sedra))
+            | Some r -> Some { Parasha = parasha; Reading = r }
+            | None -> (readings |> Seq.tryFind(fun i -> i.Parasha = parasha))
 
         reading
 
